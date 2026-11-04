@@ -22,10 +22,10 @@ module roi_stream_crop #(
     reg [COORD_W-1:0] x,y;
     wire [COORD_W-1:0] px = s_sof ? {COORD_W{1'b0}} : x;
     wire [COORD_W-1:0] py = s_sof ? {COORD_W{1'b0}} : y;
-    wire within = (px >= cfg_x0) && (px <= cfg_x1) &&
+    wire inside_roi = (px >= cfg_x0) && (px <= cfg_x1) &&
                   (py >= cfg_y0) && (py <= cfg_y1) &&
                   (cfg_x0 <= cfg_x1) && (cfg_y0 <= cfg_y1);
-    assign s_ready = !within || !m_valid || m_ready;
+    assign s_ready = !inside_roi || !m_valid || m_ready;
     always @(posedge clk or negedge rst_n) begin
         if (!rst_n) begin
             x <= 0;
@@ -39,7 +39,7 @@ module roi_stream_crop #(
             if (s_valid && s_ready) begin
                 if (s_eol) begin x <= 0; y <= py+1'b1; end
                 else begin x <= px+1'b1; y <= py; end
-                if (within) begin
+                if (inside_roi) begin
                     m_pixel <= s_pixel;
                     m_sof <= (px == cfg_x0 && py == cfg_y0);
                     m_eol <= (px == cfg_x1);
