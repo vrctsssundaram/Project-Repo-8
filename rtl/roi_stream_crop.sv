@@ -18,7 +18,6 @@ module roi_stream_crop #(
     output reg                  m_valid,
     input  wire                 m_ready
 );
-    timeunit 1ns; timeprecision 1ps;
     reg [COORD_W-1:0] x,y;
     wire [COORD_W-1:0] px = s_sof ? {COORD_W{1'b0}} : x;
     wire [COORD_W-1:0] py = s_sof ? {COORD_W{1'b0}} : y;
