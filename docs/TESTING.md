@@ -4,4 +4,4 @@ Run `make test`; confirm `PASS` and exit code 0. Directed test sends twelve pixe
 
 Further work: randomized output stalls, malformed frame markers, ROI changes between frames, extreme image dimensions, pixel-rate timing and memory/resource synthesis.
 
-Run `make synth` with Yosys installed to reproduce the generic RTL synthesis check. Hardware placement, timing and power remain separate.
+`make synth` reproduces the generic Yosys RTL synthesis check.

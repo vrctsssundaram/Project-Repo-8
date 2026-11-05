@@ -17,6 +17,6 @@ make synth
 
 Design sources are in `rtl/`, directed tests in `tb/`, and interface, architecture, testing and measured results in `docs/`.
 
-**Scope:** Single 8-bit pixel lane; no image memory, color conversion, scaling or codec.
+**Architecture:** Single-lane 8-bit grayscale ROI filter with raster tracking and regenerated markers.
 
 Project owner: Sundaram S S.
