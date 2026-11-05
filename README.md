@@ -1,4 +1,4 @@
-# PixelROI-Stream
+# Streaming grayscale ROI extractor
 
 Programmable region-of-interest cropper for grayscale raster pixel streams.
 
